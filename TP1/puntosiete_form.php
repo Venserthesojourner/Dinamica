@@ -17,7 +17,14 @@ formulario: -->
     <form action="" method="get">
     <input type="text">
     <input type="text">
-    <select name="operaciones" id="operaciones"></select>
+    <select name="operaciones" id="operaciones">
+    <option value="" disabled>operaciones</option>
+    <option value="+">Suma</option>
+    <option value="-">Resta</option>
+    <option value="*">Multiplicacion</option>
+    <option value="/">Division</option></select>
+    <input type="submit" value="=">
     </form>
+    
 </body>
 </html>

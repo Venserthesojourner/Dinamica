@@ -1,1 +1,1 @@
--- This is a database FILE for testing purpouse
+-- This is a database FILE designed for testing purpouses
