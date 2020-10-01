@@ -55,12 +55,12 @@ include_once ('../Vistas/Basicframe/header.php');
     <button class="btn btn-outline-secondary" disabled="disabled">Cargado Por</button>    
 </div>
 <div class="col col-md-6 ">
-<div class="form-group" style="border-radius:5px;">    
-    <label for="">Administrador</label>
+<div class="form-group" style="border-radius:5px; margin:5px">    
+    <label for="admin">Administrador</label>
     <input type="radio" name="usr" id="admin" value=1>
-    <label for="">Usuario</label>
+    <label for="user">Usuario</label>
     <input type="radio" name="usr" id="user" value=2>
-    <label for="">Visitante</label>    
+    <label for="invi">Visitante</label>    
     <input type="radio" name="usr" id="invi" value=3>
 </div>
 </div>
@@ -74,7 +74,7 @@ include_once ('../Vistas/Basicframe/header.php');
     <button class="btn btn-outline-secondary" disabled="disabled">Protegido</button>    
 </div>
 <div class="col col-md-6 ">
-<input type="checkbox" name="" id="">
+<input type="checkbox" name="protege" id="protege">
 <small><i>(Marcar si el archivo debe ser protegido con contraseña)</i></small>
 </div>
 </div>

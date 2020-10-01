@@ -46,11 +46,11 @@ Descripci&oacute;n
 <div class="col-md-9">
 <span>Tipo de Usuario</span>
 <div class="form-group" style="border-style: inset; border-radius:5px; padding:15px">    
-    <label for="">Administrador</label>
+  <label for="admin">Administrador</label>
     <input type="radio" name="usr" id="admin" value=1>
-    <label for="">Usuario</label>
+    <label for="user">Usuario</label>
     <input type="radio" name="usr" id="user" value=2>
-    <label for="">Visitante</label>    
+    <label for="invi">Visitante</label>    
     <input type="radio" name="usr" id="invi" value=3>
 </div>
 </div>

@@ -32,13 +32,14 @@ Motivo
 
 <button class="btn btn-outline-secondary" disabled="disabled">Cargado Por</button>  
 <div class="form-group" style="border-radius:5px; margin:5px">    
-    <label for="">Administrador</label>
+    <label for="admin">Administrador</label>
     <input type="radio" name="usr" id="admin" value=1>
-    <label for="">Usuario</label>
+    <label for="user">Usuario</label>
     <input type="radio" name="usr" id="user" value=2>
-    <label for="">Visitante</label>    
+    <label for="invi">Visitante</label>    
     <input type="radio" name="usr" id="invi" value=3>
 </div>
+
 
 </div>
 
