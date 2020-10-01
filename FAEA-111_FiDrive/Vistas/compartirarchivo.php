@@ -57,11 +57,11 @@ include_once ('../Vistas/Basicframe/header.php');
 <div class="col col-md-6 ">
 <div class="form-group" style="border-radius:5px;">    
     <label for="">Administrador</label>
-    <input type="radio" name="" id="">
+    <input type="radio" name="usr" id="admin" value=1>
     <label for="">Usuario</label>
-    <input type="radio" name="" id="">
+    <input type="radio" name="usr" id="user" value=2>
     <label for="">Visitante</label>    
-    <input type="radio" name="" id="">
+    <input type="radio" name="usr" id="invi" value=3>
 </div>
 </div>
 </div>
@@ -87,7 +87,7 @@ include_once ('../Vistas/Basicframe/header.php');
     <button class="btn btn-outline-secondary" disabled="disabled">Contraseña</button>    
 </div>
 <div class="col col-md-6 ">
-<input type="password" name="" id="">
+<input type="password" name="pass" id="pass">
 </div>
 </div>
 

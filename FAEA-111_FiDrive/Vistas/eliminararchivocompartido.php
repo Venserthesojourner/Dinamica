@@ -3,6 +3,7 @@ $title = "DEJAR DE COMPARTIR ARCHIVOS";
 $cardtitle = "Dejar de compartir Archivo";
 $tagname = "1234.png";
 $tagshared = 0;
+$choclodetexto = "";
 include_once ('../Vistas/Basicframe/header.php');
 ?>
 
@@ -25,18 +26,18 @@ include_once ('../Vistas/Basicframe/header.php');
 
 Motivo
 <div class="form-group">   
-    <textarea name="" id="" cols="100" rows="10"></textarea>
+    <textarea name="modus" id="modus" cols="100" rows="10"><?php echo $choclodetexto;?></textarea>
 </div>
 
 
 <button class="btn btn-outline-secondary" disabled="disabled">Cargado Por</button>  
 <div class="form-group" style="border-radius:5px; margin:5px">    
     <label for="">Administrador</label>
-    <input type="radio" name="" id="">
+    <input type="radio" name="usr" id="admin" value=1>
     <label for="">Usuario</label>
-    <input type="radio" name="" id="">
+    <input type="radio" name="usr" id="user" value=2>
     <label for="">Visitante</label>    
-    <input type="radio" name="" id="">
+    <input type="radio" name="usr" id="invi" value=3>
 </div>
 
 </div>
