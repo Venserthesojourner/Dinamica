@@ -37,4 +37,17 @@ spl_autoload_register(function ($clase) {
    
 });
 
+function hiddenData(){
+	$var = $_POST["IDarchivo"];
+	if (isset($var)){
+		return $var;
+	} else {
+		return 0;
+	}
+}
+
+function tipoSubmit(){
+	return "exito.php";
+}
+
 ?>

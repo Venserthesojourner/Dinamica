@@ -7,7 +7,7 @@ include_once ('../Vistas/Basicframe/header.php');
 
 
 
-<form action="exito.php" method="post">
+<form action="" method="post">
 <div class="row" style="padding:15px">
 
 <div class="col-md-3">
@@ -17,7 +17,7 @@ include_once ('../Vistas/Basicframe/header.php');
 </div>
 <div class="col-md-6">
 <div class="form-group">
-    <input type="text" name="name" id="name" placeholder="1234.png">    
+    <input type="text" name="name" id="name" placeholder="1234.png" required>    
 </div>
 </div>
 </div>
@@ -82,7 +82,7 @@ XLS <i class="fa fa-file-excel-o" aria-hidden="true"></i> <input type="checkbox"
 </div>
 </div>
 
-<input type="hidden" name="IDarchivo" value="">
+<input type="hidden" name="IDarchivo" value="<?php return hiddenData();?>">
 
 </form>
 <div class="col-md-9">
