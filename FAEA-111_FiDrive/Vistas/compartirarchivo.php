@@ -1,13 +1,13 @@
 <?php
 $title = "COMPARTIR ARCHIVOS";
 $cardtitle = "Compartir Archivo";
-$tagname = "1234.png";
-$tagurl = "https://laURLde_1234.png";
+$tagname = $_POST['name'];
+$tagurl = $_POST['msg'];
 $taghash = "HASH PLACEHOLDER";
 include_once ('../Vistas/Basicframe/header.php');
 ?>
 
-<form action="exito.php" method="post">
+<form action="exito.php" method="post" class="needs-validation" data-toggle="validator">
 <div class="container" style="padding:5px">
 <style>
 .row{
@@ -26,7 +26,7 @@ include_once ('../Vistas/Basicframe/header.php');
     <button class="btn btn-outline-secondary" disabled="disabled">Dias Compartibles</button>    
 </div>
 <div class="col col-md-6 ">
-<input type="number" name="expiration" id="expiration" default="0"><br>
+<input type="number" name="expiration" id="expiration" value="0"><br>
 <small><i>
 (Si queda vació quiere decir que no expira)
 </i></small>
@@ -42,7 +42,7 @@ include_once ('../Vistas/Basicframe/header.php');
     <button class="btn btn-outline-secondary" disabled="disabled">Descargas Disponibles</button>    
 </div>
 <div class="col col-md-6 ">
-<input type="number" name="numerito" id="numerito" default="0"><br>
+<input type="number" name="numerito" id="numerito" value="0"><br>
 <small><i>(Si queda vació quiere decir que no hay limites)</i> </small>
 </div>
 </div>
@@ -56,12 +56,12 @@ include_once ('../Vistas/Basicframe/header.php');
 </div>
 <div class="col col-md-6 ">
 <div class="form-group" style="border-radius:5px; margin:5px">    
-    <label for="admin">Administrador</label>
-    <input type="radio" name="usr" id="admin" value=1>
-    <label for="user">Usuario</label>
-    <input type="radio" name="usr" id="user" value=2>
-    <label for="invi">Visitante</label>    
-    <input type="radio" name="usr" id="invi" value=3>
+<label class="control-label" for="usuario"><strong>Usuario</strong></label>
+<select name="usuario" id="usuario" required>
+  <option value="administrador">Administrador</option>
+  <option value="usuario activo">Activo</option>
+  <option value="invitado">Invitado</option>
+</select>
 </div>
 </div>
 </div>
@@ -88,21 +88,21 @@ include_once ('../Vistas/Basicframe/header.php');
 </div>
 <div class="col col-md-6 ">
 <input type="password" name="pass" id="pass">
-</div>
-</div>
+<div><span id="passstrength"></span></div>
 
+</div>
+</div>
 <div class="row">
-<div class="col col-md-6">
+<div class="col col-md-9">
 <ul class="pagination" style="border-radius: 5px;">
 <li class="page-item"><button class="btn btn-secondary" disabled="disabled">URL:</button></li>
-<li class="page-item"><button class="btn btn-outline-secondary" disabled="disabled"><?php echo $tagurl ?></button></li>
-</ul>
-<ul class="pagination" style="border-radius: 5px;">
-<li class="page-item"><button class="btn btn-secondary">Generar Hash</button></li>
-<li class="page-item"><button class="btn btn-outline-secondary" disabled="disabled"><?php echo $taghash ?></button></li>
-</ul>
-</div>
-<div class="col col-md-6 ">
+<li class="page-item"><button class="btn btn-outline-secondary" id="URL" value="<?php echo $tagurl ?>"><?php echo $tagurl ?></button></li>
+
+</div></div>
+
+
+
+<div class="col col-md-3 ">
     <input class="btn btn-lg btn-outline-secondary" type="reset" value="Borrar">
     <input class="btn btn-lg btn-outline-secondary" type="submit" value="Enviar">
 </div>
@@ -110,6 +110,15 @@ include_once ('../Vistas/Basicframe/header.php');
 
 </div>
 </form>
+
+</ul>
+<ul class="pagination" style="border-radius: 5px;">
+<li class="page-item"><button class="btn btn-secondary" onclick="generarHash()">Generar Hash</button></li>
+<li class="page-item"><button class="btn btn-outline-secondary" id="link" value="<?php echo $tagurl ?>"><?php echo $taghash ?></button></li>
+</ul>
+
+
+
 <?php
 include_once ('../Vistas/Basicframe/footer.php');
 ?>

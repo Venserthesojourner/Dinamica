@@ -1,59 +1,68 @@
 <?php
 $title = "ALTA Y MODIFICACION DE ARCHIVOS";
 $cardtitle = "Alta/Modificacion de Archivo";
-$choclodetexto = "";
 include_once ('../Vistas/Basicframe/header.php');
+
+$id = $_POST['IDarchivo'];
+$placeholder = "";
+if ($id == 0){
+  $placeholder = "1234.png";
+} else {
+  $placeholder = $_POST["name"];
+  $arcFalso = $_POST['msg'];
+}
 ?>
 
-
-
-<form action="" method="post">
+<form action="exito.php" method="get" id="formulario" enctype="multipart/form-data">
 <div class="row" style="padding:15px">
+
+<input type="hidden" name="folder" value="<?php $_POST['folder']?>">
 
 <div class="col-md-3">
 <div class="form-group">
-    Nombre
+<label class="control-label" for="name"><strong>Name</strong></label>
 </div>
 </div>
 <div class="col-md-6">
 <div class="form-group">
-    <input type="text" name="name" id="name" placeholder="1234.png" required>    
+    <input type="text" name="name" id="name" placeholder="<?php echo $placeholder?>" required>    
 </div>
 </div>
 </div>
-
+<hr>
 <div class="row" style="padding:15px">
 <div class="col-md-9">
-<span>Archivo</span>
-<div class="form-group form-check" style="border-style: inset; border-radius:5px">
-<input type="file" name="archivo" id="archive">
+<label class="control-label" for="archivo"><strong>Archivo</strong></label>
+<div class="file-field">
+    <div class="btn btn-unique btn-sm float-left">      
+      <input type="file" name="archive" id="archive" accept=".png,.jpg,.jpeg,.gif,.zip,.doc,.docx,.PDF,.XLS,.xlsx" 
+      onchange="laFunction()" required>
+      <button disabled hidden id="archsubido" name="archsubido"><?php echo $arcFalso;?></button>
+    </div>
+  </div>
 </div>
 </div>
-</div>
+<hr><hr>
 
+<!--Descripcion-->
 <div class="row" style="padding:15px">
-
+<div class="col-md-9">
+<label class="control-label" for="summernote"><strong>Descripción del Archivo</strong></label>
+					<div class="form-group">          
+          <textarea class="form-control text-wrap form-control-block" name="summernote" id="summernote">
+          </textarea>
+					</div>
+</div>
 <div class="col-md-3">
-Descripci&oacute;n
-</div>
-<div class="col-md-6">
-<div class="form-group">   
-    <textarea name="desc" id="desc" cols="100" rows="10"><?php echo $choclodetexto;?></textarea>
-</div>
-</div>
-</div>
-<div class="row" style="padding:15px">
-<div class="col-md-9">
-<span>Tipo de Usuario</span>
-<div class="form-group" style="border-style: inset; border-radius:5px; padding:15px">    
-  <label for="admin">Administrador</label>
-    <input type="radio" name="usr" id="admin" value=1>
-    <label for="user">Usuario</label>
-    <input type="radio" name="usr" id="user" value=2>
-    <label for="invi">Visitante</label>    
-    <input type="radio" name="usr" id="invi" value=3>
+<label class="control-label" for="usuario"><strong>Usuario</strong></label>
+<select name="usuario" id="usuario" required>
+  <option value="administrador">Administrador</option>
+  <option value="usuario activo">Activo</option>
+  <option value="invitado">Invitado</option>
+</select>
 </div>
 </div>
+<!--Descripcion-->
 
 <div class="col-md-9">
 <span>Icono Tipo Archivo</span>
@@ -82,14 +91,14 @@ XLS <i class="fa fa-file-excel-o" aria-hidden="true"></i> <input type="checkbox"
 </div>
 </div>
 
-<input type="hidden" name="IDarchivo" value="<?php return hiddenData();?>">
+<input type="hidden" name="IDarchivo" value="<?php echo $id?>">
 
-</form>
+
 <div class="col-md-9">
-<input type="submit" class="btn btn-outline-info" value="Enviar">
+<input type="submit" id="send" class="btn btn-outline-info" value="Enviar">
 </div>
 </div><!-- row -->
-
+</form>
 
 </div>
 </div>

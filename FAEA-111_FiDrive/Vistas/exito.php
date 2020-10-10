@@ -3,6 +3,15 @@ $title = "EXITO";
 $cardtitle = "";
 $tagname = "1234.png";
 include_once ('../Vistas/Basicframe/header.php');
+
+$obj = new operacionesControl();
+$datos = data_submitted();
+if ($datos['IDarchivo'] == 0){
+    $obj->subirArchivo($datos);
+}
+
+
+
 ?>
 <div class="row">
     <div class="col col-md-3"></div>

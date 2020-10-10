@@ -1,1 +1,6 @@
 /* This is a css file which will contain the stylesheet for our site */
+
+.btn.btn-primary.custom-btn {
+	background-color: #838383;
+	border-color: #838383;
+}
