@@ -1,6 +1,7 @@
 <?php
 include_once("../config.php");
 include_once("../Control/operacionesControl.php");
+include_once("../Control/controlBD.php");
 ?>
 
 <!doctype html>
@@ -30,13 +31,17 @@ include_once("../Control/operacionesControl.php");
 
     <script src='http://cdnjs.cloudflare.com/ajax/libs/bootstrap-validator/0.4.5/js/bootstrapvalidator.min.js'></script>
     <script src="https://cdn.rawgit.com/PascaleBeier/bootstrap-validate/v2.2.0/dist/bootstrap-validate.js" ></script>
+
+    <link rel="stylesheet" href="Styles/bootstrap.min.css">
     <script type="text/javascript" src="./include/jquery.validate.js"></script>
+
+
     </head>  
     <body>
 <!-- Nav tabs -->
-<ul class="nav nav-tabs bg-dark colorCab" id="navId">
-    <li class="nav-item">
-        <a href="main.php" class="nav-link active"><h5 style="font-family:Consolas;font-weight:bold">FAEA-111_FiDrive</h5></a>
+<ul class="nav nav-tabs bg-dark colorCab" id="navId" style="border:0px">
+    <li>
+        <a href="main.php" class="nav-link active"><h1 style="font-weight:bold">FAEA-111_FiDrive</h1></a>
     </li>
 <!--     <li class="nav-item dropdown" style="padding: 0px;">
         <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Menu</a>

@@ -2,7 +2,7 @@
 $enunciado = "";
 $Titulo="Indice";
 $subtitulo="";
-include_once("marco/head.php");?>
+include_once("../marco/head.php");?>
 <script>
     function ocultaCards(){
         document.getElementById("asider").style.display = "None";
@@ -17,4 +17,4 @@ include_once("marco/head.php");?>
     <div class="col col-xl-3"></div>
 </div>
 
-<?php include_once("marco/footer.php");?>
+<?php include_once("../marco/footer.php");?>

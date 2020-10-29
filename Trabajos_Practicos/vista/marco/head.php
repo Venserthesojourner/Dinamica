@@ -13,7 +13,7 @@
     <!-- Optional JavaScript -->
     <script src='http://cdnjs.cloudflare.com/ajax/libs/bootstrap-validator/0.4.5/js/bootstrapvalidator.min.js'></script>
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-    <script src="scripts/scripts.js"></script>
+    <script src="../scripts/scripts.js"></script>
 
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
@@ -31,14 +31,14 @@
   <div class="col col-md-6">
   <li class="list-inline-item"><button class="btn btn-primary btn-sm float:left" onclick="reveal(0)">Practico 1</button></li>
 <ul class="pagination" id="tp1" style="visibility:hidden;">
-  <li class="page-item"><a class="page-link" href="puntouno_form.php">1</a></li>
-  <li class="page-item"><a class="page-link" href="puntodos_form.php">2</a></li>
-  <li class="page-item"><a class="page-link" href="puntotres_form.php">3</a></li>
-  <li class="page-item"><a class="page-link" href="puntocuatro_form.php">4</a></li>
-  <li class="page-item"><a class="page-link" href="puntocinco_form.php">5</a></li>
-  <li class="page-item"><a class="page-link" href="puntoseis_form.php">6</a></li>
-  <li class="page-item"><a class="page-link" href="puntosiete_form.php">7</a></li>
-  <li class="page-item"><a class="page-link" href="puntoocho_form.php">8</a></li>  
+  <li class="page-item"><a class="page-link" href="../TP1/puntouno_form.php">1</a></li>
+  <li class="page-item"><a class="page-link" href="../TP1/puntodos_form.php">2</a></li>
+  <li class="page-item"><a class="page-link" href="../TP1/puntotres_form.php">3</a></li>
+  <li class="page-item"><a class="page-link" href="../TP1/puntocuatro_form.php">4</a></li>
+  <li class="page-item"><a class="page-link" href="../TP1/puntocinco_form.php">5</a></li>
+  <li class="page-item"><a class="page-link" href="../TP1/puntoseis_form.php">6</a></li>
+  <li class="page-item"><a class="page-link" href="../TP1/puntosiete_form.php">7</a></li>
+  <li class="page-item"><a class="page-link" href="../TP1/puntoocho_form.php">8</a></li>  
   </ul>
   </div>
   <div class="col col-md-6">

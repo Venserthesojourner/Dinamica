@@ -33,8 +33,12 @@ class operacionesControl {
         print_r($datos);
         print_r($_FILES);
 
+        
+
         $target_dir = $datos['folder'];
-        $target_file = $target_dir . basename($datos['archive']['name']);
+        $target_file = $target_dir .'/'. $datos['archive'];
+
+        echo $target_file;
         $uploadOk = 1;
         $imageFileType = strtolower(pathinfo($target_file,PATHINFO_EXTENSION));
 // Check if image file is a actual image or fake image

@@ -58,9 +58,11 @@ include_once ('../Vistas/Basicframe/header.php');
 <div class="form-group" style="border-radius:5px; margin:5px">    
 <label class="control-label" for="usuario"><strong>Usuario</strong></label>
 <select name="usuario" id="usuario" required>
-  <option value="administrador">Administrador</option>
-  <option value="usuario activo">Activo</option>
-  <option value="invitado">Invitado</option>
+<?php 
+
+echo  controlDB::userselector();
+
+?>
 </select>
 </div>
 </div>

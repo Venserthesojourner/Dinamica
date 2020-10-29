@@ -16,7 +16,7 @@ $enunciado = "Modificar el formulario del ejercicio anterior solicitando, tal qu
 estudios primarios, 3-estudios secundarios. Agregar el componente que crea más
 apropiado para solicitar el sexo. En la página que procesa el formulario mostrar además
 un mensaje que indique el tipo de estudios que posee y su sexo.";
-include_once("marco/head.php");
+include_once("../marco/head.php");
 ?>
 
 <div id="box">
@@ -145,5 +145,5 @@ include_once("marco/head.php");
 </div>   
 </body>
 <?php 
-include_once("marco/footer.php");
+include_once("../marco/footer.php");
 ?>

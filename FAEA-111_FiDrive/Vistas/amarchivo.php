@@ -11,12 +11,13 @@ if ($id == 0){
   $placeholder = $_POST["name"];
   $arcFalso = $_POST['msg'];
 }
+
 ?>
 
 <form action="exito.php" method="get" id="formulario" enctype="multipart/form-data">
 <div class="row" style="padding:15px">
 
-<input type="hidden" name="folder" value="<?php $_POST['folder']?>">
+<input type="hidden" name="folder" value="<?php echo $_POST['folder']?>">
 
 <div class="col-md-3">
 <div class="form-group">
@@ -25,7 +26,7 @@ if ($id == 0){
 </div>
 <div class="col-md-6">
 <div class="form-group">
-    <input type="text" name="name" id="name" placeholder="<?php echo $placeholder?>" required>    
+    <input type="text" name="name" id="name" placeholder="<?php echo $placeholder?>" value ="<?php echo $placeholder?>" required>    
 </div>
 </div>
 </div>
@@ -53,15 +54,26 @@ if ($id == 0){
           </textarea>
 					</div>
 </div>
+
+
+<!-- Selector de Usuarios -->
+
 <div class="col-md-3">
 <label class="control-label" for="usuario"><strong>Usuario</strong></label>
 <select name="usuario" id="usuario" required>
-  <option value="administrador">Administrador</option>
-  <option value="usuario activo">Activo</option>
-  <option value="invitado">Invitado</option>
+
+<?php 
+
+echo  controlDB::userselector();
+
+?>
 </select>
 </div>
 </div>
+
+<!-- Selector de Usuarios -->
+
+
 <!--Descripcion-->
 
 <div class="col-md-9">

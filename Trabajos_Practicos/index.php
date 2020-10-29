@@ -24,7 +24,7 @@
     <p>Nro de Legajo: FAEA-111</p>
     </div>
     <div>
-    <button class="btn btn-lg btn-primary btn-block"><a href="vista/main.php" style="color:whitesmoke">ENTRE</a></button>
+    <button class="btn btn-lg btn-primary btn-block"><a href="vista/Main/main.php" style="color:whitesmoke">ENTRE</a></button>
     </div>
     </div> 
     <div class="col col-xl-4"></div>

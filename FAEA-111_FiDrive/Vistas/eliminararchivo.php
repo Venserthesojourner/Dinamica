@@ -23,15 +23,19 @@ Motivo
     <textarea name="reas" id="reas" cols="100" rows="10"><?php echo $choclodetexto;?></textarea>
 </div>
 
-
+<div class="col-md-3">
 <button class="btn btn-outline-secondary" disabled="disabled">Cargado Por</button>  
-<div class="form-group" style="border-radius:5px; margin:5px">    
-    <label for="admin">Administrador</label>
-    <input type="radio" name="usr" id="admin" value=1>
-    <label for="user">Usuario</label>
-    <input type="radio" name="usr" id="user" value=2>
-    <label for="invi">Visitante</label>    
-    <input type="radio" name="usr" id="invi" value=3>
+
+<label class="control-label" for="usuario"><strong>Usuario</strong></label>
+<select name="usuario" id="usuario" required>
+
+<?php 
+
+echo  controlDB::userselector();
+
+?>
+</select>
+</div>
 </div>
 
 
