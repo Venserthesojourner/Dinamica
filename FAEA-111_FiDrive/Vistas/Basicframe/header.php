@@ -2,6 +2,9 @@
 include_once("../config.php");
 include_once("../Control/operacionesControl.php");
 include_once("../Control/controlBD.php");
+
+date_default_timezone_set ( "America/Argentina/San_Luis" );
+
 ?>
 
 <!doctype html>

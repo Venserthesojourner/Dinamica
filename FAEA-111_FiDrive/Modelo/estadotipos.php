@@ -1,5 +1,4 @@
 <?php
-include_once("BaseDatos.php");
 
 class estadotipos {
     private $idEstado;
@@ -114,7 +113,7 @@ class estadotipos {
 
     public static function buscarDB ($campo, $parametro){
         $base = new BaseDatos ();
-        $consulta = "SELECT * FROM archivocargadoestado WHERE {$campo} = {$parametro}";
+        $consulta = "SELECT * FROM estadotipos WHERE {$campo} = {$parametro}";
         $find = null;
         
         if ($base->Iniciar()){

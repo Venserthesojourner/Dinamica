@@ -1,55 +1,59 @@
 <?php
 
 class archivocargadoestado {
-    private $idarchivocargadoestado; // Int
-    private $idestadotipos; // Int
+    private $archivocargadoestado; // Int
+    private $estadotipos; // Int
     private $acedescripcion; // String
-    private $idusuario; // Int
+    private $usuario; // Int
     private $acefechaingreso; // DATE
     private $acefechafin; // DATE
-    private $idarchivocargado; // Int
+    private $archivocargado; // Int
     private static $mensajedeoperacion;
 
     public function __construct()
     {
-        $this->idarchivocargadoestado = 0;
-        $this->idestadotipos = 0;
+        $this->archivocargadoestado = 0;
+        $this->estadotipos = new estadotipos();
         $this->acedescripcion = "";
-        $this->idusuario = 0;
+        $this->usuario = new usuario();
         $this->acefechaingreso = (new DateTime())->format('Y-m-d H:i:s');
         
         $this->acefechafin = 'null';
-        $this->idarchivocargado = 0;
+        $this->archivocargado = new archivocargado();
         self::$mensajedeoperacion = "";
     }
 
-    public static function aRE_construct($idARE,$idET,$AceD,$iduser,$idAC){
+    public static function aRE_construct($param){
         $obj = new archivocargadoestado();
-        $obj->setIdarchivocargadoestado($idARE);
-        $obj->setIdestadotipos($idET);
-        $obj->setAcedescripcion($AceD);
-        $obj->setIdusuario($iduser);
-        $obj->setIdarchivocargado($idAC);
+        $obj->setarchivocargadoestado($param['archivocargadoestado']);
+        $obj->setestadotipos($param['archivocargadoestado']);
+        $obj->setAcedescripcion($param['archivocargadoestado']);
+        $obj->setusuario($param['archivocargadoestado']);
+        $obj->setarchivocargado($param['archivocargadoestado']);
         return $obj;
     }
 
-    public function getIdarchivocargadoestado(){return $this->idarchivocargadoestado;}
-    public function getIdestadotipos(){return $this->idestadotipos;}
+    public function getArchivoCargadoestado(){return $this->archivocargadoestado;}
+    public function getEstadoTipos(){return $this->estadotipos;}
     public function getAcedescripcion(){return $this->acedescripcion;}
-    public function getIdusuario(){return $this->idusuario;}
+    public function getUsuario(){return $this->usuario;}
     public function getAcefechaingreso(){return $this->acefechaingreso;}
     public function getAcefechafin(){return $this->acefechafin;}
-    public function getIdarchivocargado(){return $this->idarchivocargado;}
+    public function getArchivoCargado(){return $this->archivocargado;}
 
     public static function getMensajeoperacion (){return self::$mensajedeoperacion;}
 
-    public function setIdarchivocargadoestado($idarchivocargadoestado){$this->idarchivocargadoestado = $idarchivocargadoestado;}
-    public function setIdestadotipos($idestadotipos){$this->idestadotipos = $idestadotipos;}
+    private function getusuario(){return $this->getUsuario()->getIduser();}
+    private function getarchivocargado(){return $this->getArchivoCargado()->getIDarchcargado();}
+    private function getestadotipos(){return $this->getEstadoTipos()->getIdEstado();}
+
+    public function setarchivocargadoestado($archivocargadoestado){$this->archivocargadoestado = $archivocargadoestado;}
+    public function setestadotipos($estadotipos){$this->estadotipos = $estadotipos;}
     public function setAcedescripcion($acedescripcion){$this->acedescripcion = $acedescripcion;}
-    public function setIdusuario($idusuario){$this->idusuario = $idusuario;}
+    public function setusuario($usuario){$this->usuario = $usuario;}
     public function setAcefechaingreso($acefechaingreso){$this->acefechaingreso = $acefechaingreso;}
     public function setAcefechafin($acefechafin){$this->acefechafin = $acefechafin;}
-    public function setIdarchivocargado($idarchivocargado){$this->idarchivocargado = $idarchivocargado;}
+    public function setarchivocargado($archivocargado){$this->archivocargado = $archivocargado;}
 
     public static function setMensajeoperacion ($mensaje){self::$mensajedeoperacion = $mensaje;}
 
@@ -58,9 +62,9 @@ class archivocargadoestado {
         $resp = false;
 
         $consulta = "INSERT INTO archivocargadoestado 
-        (idestadotipos, acedescripcion, idusuario, acefechaingreso, idarchivocargado)
+        (estadotipos, acedescripcion, usuario, acefechaingreso, archivocargado)
         VALUES
-        ({$this->getIdestadotipos()},'{$this->getAcedescripcion()}',{$this->getIdusuario()},'{$this->getAcefechaingreso()}',{$this->getIdarchivocargado()})";
+        ({$this->getEstadoTipos()},'{$this->getAcedescripcion()}',{$this->getusuario()},'{$this->getAcefechaingreso()}',{$this->getArchivoCargado()})";
 
 
         if ($base->Iniciar()){
@@ -69,7 +73,7 @@ class archivocargadoestado {
 
             if ($id <> -1){
 
-                $this->setIdarchivocargadoestado($id);
+                $this->setarchivocargadoestado($id);
                 $resp = true;
 
             } else {
@@ -94,7 +98,7 @@ class archivocargadoestado {
         if ($condicion != ""){
             $consulta = "{$consulta} WHERE {$condicion}";
         }
-        $consulta = "{$consulta} ORDER BY idarchivocargadoestado";
+        $consulta = "{$consulta} ORDER BY archivocargadoestado";
 
         if ($base->Iniciar()){
 
@@ -102,18 +106,18 @@ class archivocargadoestado {
                 
                 while ( $row2 = $base->Registro() ){
 
-                    $idARE = $row2['idestadotipos'];
-                    $idET = $row2['etdescripcion'];
-                    $AceD = $row2['etactivo'];
-                    $iduser = $row2['etactivo'];
-                    $idAC = $row2['etactivo'];
+                    $row2 = $base->Registro ();
+                    $idARE = $row2['archivocargadoestado'];
+                    $idET = estadotipos::buscarDB("estadotipos",$row2['estadotipos']);
+                    $AceD = $row2['acedescripcion'];
+                    $iduser = usuario::buscarDB("usuario",$row2['usuario']);
+                    $idAC = archivocargado::buscarDB("archivocargado",$row2['archivocargado']);
 
                     //Creamos el objeto de la clase
-                    $newOBJET = self::aRE_construct($idARE,$idET,$AceD,$iduser,$idAC);
-                    $newOBJET->setIdarchivocargadoestado($row2['idestadotipos']);
-                    $newOBJET->setAcefechaingreso($row2['idestadotipos']);
-                    $newOBJET->setAcefechafin($row2['idestadotipos']);
-                    array_push($listado,$newOBJET);
+                    $find = self::aRE_construct($idARE,$idET,$AceD,$iduser,$idAC);
+                    $find->setAcefechaingreso($row2['acefechaingreso']);
+                    $find->setAcefechafin($row2['acefechafin']);
+                    array_push($listado,$find);
                 }
 
             } else {
@@ -137,11 +141,11 @@ class archivocargadoestado {
         if ($base->Iniciar()){
             if ($base->Ejecutar ( $consulta )) {
                 $row2 = $base->Registro ();
-                $idARE = $row2['idarchivocargadoestado'];
-                $idET = $row2['idestadotipos'];
+                $idARE = $row2['archivocargadoestado'];
+                $idET = estadotipos::buscarDB("estadotipos",$row2['estadotipos']);
                 $AceD = $row2['acedescripcion'];
-                $iduser = $row2['idusuario'];
-                $idAC = $row2['idarchivocargado'];
+                $iduser = usuario::buscarDB("usuario",$row2['usuario']);
+                $idAC = archivocargado::buscarDB("archivocargado",$row2['archivocargado']);
 
                 //Creamos el objeto de la clase
                 $find = self::aRE_construct($idARE,$idET,$AceD,$iduser,$idAC);
@@ -162,10 +166,17 @@ class archivocargadoestado {
     public function actualizardDB ($parametros){
         $resp = 0;
         $base = new BaseDatos();
-        $ref = $this->getIdarchivocargadoestado();
+        $ref = $this->getArchivoCargadoestado();
         if ($base->Iniciar()){
+            $condition = "";
             foreach ($parametros as $clave => $parametro){
-            $consulta = "UPDATE archivocargadoestado SET {$clave}={$parametro} WHERE idarchivocargadoestado = {$ref}";
+                if ($condition != ""){
+                    $condition .= " , ";
+                }
+                $condition .= "{$clave}={$parametro}";
+            }
+            $consulta = "UPDATE archivocargadoestado SET {$condition} WHERE archivocargadoestado = {$ref}";
+
             echo $consulta;
             if ($base->Ejecutar ( $consulta )) {
                 $resp++;
@@ -173,7 +184,7 @@ class archivocargadoestado {
                 //Mensaje de Error: Fallo de Conexion
                 self::setMensajeoperacion("Estado Tipo-> Actualizar-FL: {$base->getError()}");
             }
-            }
+          
 
         } else {
             //Mensaje de Error: Fallo de Conexion

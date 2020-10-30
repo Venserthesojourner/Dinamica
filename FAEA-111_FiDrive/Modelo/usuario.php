@@ -14,15 +14,16 @@ class usuario{
         $this->uApellido = "";
         $this->uLogin = "";
         $this->uPassword = "";
-        $this->uActivo = 0;
+        $this->uActivo = 1;
         self::$mensajedeoperacion = "";
     }
 
-    public static function U_construct($uName,$uApellido,$uPassword){
+    public static function U_construct($param){
         $obj = new usuario();
-        $obj->setUname($uName);
-        $obj->setUapellido($uApellido);
-        $obj->setUpassword($uPassword);
+        $obj->setUname($param['usnombre']);
+        $obj->setUapellido($param['usapellido']);
+        $obj->setUlogin($param['uslogin']);
+        $obj->setUpassword($param['usclave']);
         return $obj;
     }
 
@@ -119,7 +120,7 @@ class usuario{
 
     public static function buscarDB ($campo, $parametro){
         $base = new BaseDatos ();
-        $consulta = "SELECT * FROM archivocargadoestado WHERE {$campo} = {$parametro}";
+        $consulta = "SELECT * FROM usuario WHERE {$campo} = {$parametro}";
         $find = null;
         
         if ($base->Iniciar()){
