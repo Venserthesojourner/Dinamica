@@ -62,25 +62,33 @@ class controlDB{
         $block="";
         $listado = usuario::listarDB();
         foreach ($listado as $user){
-            $block = $block."<option value='{$user->getUname()}'>{$user->getUname()}</option>";
+            $block = $block."<option value='{$user->getIduser()}'>{$user->getUname()}</option>";
         }
         return $block;
     }
 
-    private function cargarObjeto($param){
+    public static function cargarObjeto($param){
         $obj = Null;
-        switch ($param['table']) {
+        switch ($param['operation']) {
             case 0:
                 $obj = usuario::U_construct($param);
+                $obj->insertDB();
+                echo "Se realizo una insercion exitosa.";
                 break;
             case 1:
                 $obj = archivocargado::AC_construct($param);
+                $obj->insertDB();
+                echo "Se realizo una insercion exitosa.";
                 break;
             case 2:
                 $obj = estadotipos::eT_construct($param);
+                $obj->insertDB();
+                echo "Se realizo una insercion exitosa.";
                 break;
             case 3:
                 $obj = archivocargadoestado::aRE_construct($param);
+                $obj->insertarDB();
+                echo "Se realizo una insercion exitosa.";
                 break;
         }
         return $obj;

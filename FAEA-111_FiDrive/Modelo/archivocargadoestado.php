@@ -43,9 +43,9 @@ class archivocargadoestado {
 
     public static function getMensajeoperacion (){return self::$mensajedeoperacion;}
 
-    private function getusuario(){return $this->getUsuario()->getIduser();}
-    private function getarchivocargado(){return $this->getArchivoCargado()->getIDarchcargado();}
-    private function getestadotipos(){return $this->getEstadoTipos()->getIdEstado();}
+    private function getIDusuario(){return $this->getUsuario()->getIduser();}
+    private function getIDarchivocargado(){return $this->getArchivoCargado()->getIDarchcargado();}
+    private function getIDestadotipos(){return $this->getEstadoTipos()->getIdEstado();}
 
     public function setarchivocargadoestado($archivocargadoestado){$this->archivocargadoestado = $archivocargadoestado;}
     public function setestadotipos($estadotipos){$this->estadotipos = $estadotipos;}
@@ -64,7 +64,7 @@ class archivocargadoestado {
         $consulta = "INSERT INTO archivocargadoestado 
         (estadotipos, acedescripcion, usuario, acefechaingreso, archivocargado)
         VALUES
-        ({$this->getEstadoTipos()},'{$this->getAcedescripcion()}',{$this->getusuario()},'{$this->getAcefechaingreso()}',{$this->getArchivoCargado()})";
+        ({$this->getIDEstadoTipos()},'{$this->getAcedescripcion()}',{$this->getIDusuario()},'{$this->getAcefechaingreso()}',{$this->getIDArchivoCargado()})";
 
 
         if ($base->Iniciar()){

@@ -43,7 +43,7 @@ class archivocargado{
     public function getACnombre(){return $this->acnombre;}
     public function getACdesc(){return $this->acdescripcion;}
     public function getAicon(){return $this->acicono;}
-    public function getIDusuario(){return $this->idusuario;}
+    public function getUsuario(){return $this->idusuario;}
     public function getACLink(){return $this->aclinkacceso;}
     public function getACantDescargas(){$this->accantidaddescarga;}
     public function getACantusadas(){$this->accantidadusada;}
@@ -51,6 +51,8 @@ class archivocargado{
     public function getAFechafin(){$this->acefechafincompartir;}
     public function getAPClave(){$this->acprotegidoclave;}
     public static function getMensajedeOperacion(){return self::$mensajedeoperacion;}
+
+    private function getIDusuario(){return $this->getUsuario()->getIduser();}
 
     public function setIDarchivocargado($idAC){$this->idarchivocargado = $idAC;}
     public function setACnombre($acname){$this->acnombre = $acname;}
@@ -71,7 +73,7 @@ public function insertDB(){
     $resp = false;
 
     $consulta = "INSERT INTO archivocargado (acnombre,acdescripcion,acicono,idusuario) 
-    VALUES ('{$this->getACnombre()}','{$this->getACdesc()}','{$this->getAicon()}','{($this->getIDusuario())->getIduser()}')";
+    VALUES ('{$this->getACnombre()}','{$this->getACdesc()}','{$this->getAicon()}','{$this->getIDusuario()}')";
 
     if ($base->Iniciar()){
 

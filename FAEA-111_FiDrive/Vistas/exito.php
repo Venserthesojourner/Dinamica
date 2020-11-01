@@ -5,12 +5,8 @@ $tagname = "1234.png";
 include_once ('../Vistas/Basicframe/header.php');
 
 $obj = new operacionesControl();
-$datos = data_submitted();
-if ($datos['IDarchivo'] == 0){
-    $obj->subirArchivo($datos);
-}
-
-
+$param = data_submitted();
+controlDB::cargarObjeto($param);
 
 ?>
 <div class="row">

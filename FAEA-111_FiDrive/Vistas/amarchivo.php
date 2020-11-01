@@ -103,10 +103,11 @@ XLS <i class="fa fa-file-excel-o" aria-hidden="true"></i> <input type="checkbox"
 </div>
 </div>
 
-<input type="hidden" name="IDarchivo" value="<?php echo $id?>">
 
 
 <div class="col-md-9">
+<input type="hidden" name="IDarchivo" value="<?php echo $id?>">
+<input type="hidden" name="operation" value=1>
 <input type="submit" id="send" class="btn btn-outline-info" value="Enviar">
 </div>
 </div><!-- row -->
