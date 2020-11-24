@@ -16,8 +16,7 @@ class archivocargadoestado {
         $this->estadotipos = new estadotipos();
         $this->acedescripcion = "";
         $this->usuario = new usuario();
-        $this->acefechaingreso = (new DateTime())->format('Y-m-d H:i:s');
-        
+        $this->acefechaingreso = (new DateTime())->format('Y-m-d H:i:s');        
         $this->acefechafin = 'null';
         $this->archivocargado = new archivocargado();
         self::$mensajedeoperacion = "";
@@ -193,4 +192,6 @@ class archivocargadoestado {
         return $resp;
     }
 }
+
+
 ?>
