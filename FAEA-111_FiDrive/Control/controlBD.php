@@ -67,6 +67,15 @@ class controlDB{
         return $block;
     }
 
+    public static function muestraCargados (){
+        $frame = "";
+        $listado = archivocargado::listarDB();
+        foreach ($listado as $archivo){
+            $frame .= "<button class='btn btn-outline-secondary'>{$archivo->getACnombre()}</button>";
+        }
+        return $frame;
+    }
+
     public static function cargarObjeto($param){
         $obj = Null;
         switch ($param['operation']) {
