@@ -30,12 +30,21 @@ class archivocargado{
         self::$mensajedeoperacion = "";
     }
 
-    public static function AC_construct($idusuario, $acnombre="",$acdesc="",$acicon=""){
+    public static function AC_construct($param){
         $obj = new archivocargado();
-        $obj->setACnombre($acnombre);
-        $obj->setACdescription($acdesc);
-        $obj->setACIcon($acicon); 
-        $obj->setIDusuario($idusuario);       
+        $obj->setIDarchivocargado($param['idarchivocargado']);
+        $obj->setACnombre($param['acnombre']);
+        $obj->setACdescription($param['acdescripcion']);
+        $obj->setACIcon($param['acicono']);        
+        $obj->setAClink($param['aclinkacceso']);
+        $obj->setACantDescargas($param['accantidaddescarga']);
+        $obj->setACantDescargas($param['accantidadusada']);
+        $obj->setACantDescargas($param['acfechainiciocompartir']);
+        $obj->setACantDescargas($param['acefechafincompartir']);
+        $obj->setACantDescargas($param['acprotegidoclave']); 
+        
+        $user = usuario::buscarDB("idusuario", $param['idusuario']);
+        $obj->setIDusuario($user);
         return $obj;
     }
 
@@ -115,20 +124,8 @@ public static function listarDB ($condicion = ""){
             
             while ( $row2 = $base->Registro() ){
 
-                $acnombre = $row2['acnombre'];
-                $acdesc = $row2['acdescripcion'];
-                $acicon = $row2['acicono'];
-                $idusuario = $row2['idusuario'];
-
                 //Creamos el objeto de la clase
-                $newOBJET = self::AC_construct($acnombre,$acdesc,$acicon,$idusuario);
-                $newOBJET->setIDarchivocargado($row2['idarchivocargado']);
-                $newOBJET->setAClink($row2['aclinkacceso']);
-                $newOBJET->setACantDescargas($row2['accantidaddescarga']);
-                $newOBJET->setACantDescargas($row2['accantidadusada']);
-                $newOBJET->setACantDescargas($row2['acfechainiciocompartir']);
-                $newOBJET->setACantDescargas($row2['acefechafincompartir']);
-                $newOBJET->setACantDescargas($row2['acprotegidoclave']);
+                $newOBJET = self::AC_construct($row2);
                 array_push($listado,$newOBJET);
             }
 
@@ -153,21 +150,8 @@ public static function buscarDB ($campo, $parametro){
     if ($base->Iniciar()){
         if ($base->Ejecutar ( $consulta )) {
             $row2 = $base->Registro ();
-
-            $acnombre = $row2['acnombre'];
-                $acdesc = $row2['acdescripcion'];
-                $acicon = $row2['acicono'];
-                $idusuario = $row2['idusuario'];
-
                 //Creamos el objeto de la clase
-                $find = self::AC_construct($acnombre,$acdesc,$acicon,$idusuario);
-                $find->setIDarchivocargado($row2['idarchivocargado']);
-                $find->setAClink($row2['aclinkacceso']);
-                $find->setACantDescargas($row2['accantidaddescarga']);
-                $find->setACantDescargas($row2['accantidadusada']);
-                $find->setACantDescargas($row2['acfechainiciocompartir']);
-                $find->setACantDescargas($row2['acefechafincompartir']);
-                $find->setACantDescargas($row2['acprotegidoclave']);
+                $find = self::AC_construct($row2);
         } else {
             // Mensaje de error: Fallo de busqueda
             self::setMensajedeOperacion("Estado Tipos->Buscar - FB: {$base->getError()}");

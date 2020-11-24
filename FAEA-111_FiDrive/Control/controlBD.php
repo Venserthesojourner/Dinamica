@@ -54,15 +54,16 @@ echo "<p>ID ARE: {$archivis->getIdarchivocargadoestado()}</p>
 <p>FECHA FINAL: {$archivis->getAcefechafin()}</p>
       "; */
 
- 
 
 class controlDB{
 
     public static function userselector(){
         $block="";
-        $listado = usuario::listarDB();
+        $listado = usuario::listarDB(); 
         foreach ($listado as $user){
-            $block = $block."<option value='{$user->getIduser()}'>{$user->getUname()}</option>";
+            $valor = $user->getIduser();
+            $tag = $user->getUname();
+            $block .= "<option value='{$valor}'>{$tag}</option>";
         }
         return $block;
     }
@@ -71,7 +72,12 @@ class controlDB{
         $frame = "";
         $listado = archivocargado::listarDB();
         foreach ($listado as $archivo){
-            $frame .= "<button class='btn btn-outline-secondary'>{$archivo->getACnombre()}</button>";
+            $nombre = $archivo->getACnombre();
+            $frame .= "<button class='btn btn-outline-secondary'>{$nombre}</button>
+            <button class='btn btn-outline-secondary' type='submit' formmethod='post' formaction='amarchivo.php'>Modificar</button>
+        <button class='btn btn-outline-secondary' type='submit' formmethod='post' formaction='compartirarchivo.php'>Compartir</a></button>
+        <button class='btn btn-outline-secondary' type='submit' formmethod='post' formaction='eliminararchivocompartido.php'>Dejar de compartir</a></button>
+        <button class='btn btn-outline-secondary' type='submit' formmethod='post' formaction='eliminararchivo.php?'>Eliminar</a></button>";
         }
         return $frame;
     }
@@ -105,6 +111,6 @@ class controlDB{
 
 }
 
-
+echo controlDB::muestraCargados();
 
 ?>

@@ -90,14 +90,10 @@ class usuario{
 
             if ($base ->Ejecutar($consulta)){
                 
-                while ( $row2 = $base->Registro() ){
-
-                    $uName = $row2['usnombre'];
-                    $uApellido = $row2['usapellido'];
-                    $uPassword = $row2['usclave'];
+                while ( $row2 = $base->Registro() ){                
 
                     //Creamos el objeto de la clase
-                    $newOBJET = self::U_construct($uName,$uApellido,$uPassword);
+                    $newOBJET = self::U_construct($row2);
                     $newOBJET->setIduser($row2['idusuario']);
                     $newOBJET->setUactivo($row2['usactivo']);
                     $newOBJET->setUlogin($row2['uslogin']);
