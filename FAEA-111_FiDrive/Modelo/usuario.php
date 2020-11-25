@@ -117,18 +117,15 @@ class usuario{
     public static function buscarDB ($campo, $parametro){
         $base = new BaseDatos ();
         $consulta = "SELECT * FROM usuario WHERE {$campo} = {$parametro}";
+
+       
         $find = null;
         
         if ($base->Iniciar()){
             if ($base->Ejecutar ( $consulta )) {
                 $row2 = $base->Registro ();
-
-                $uName = $row2['idestadotipos'];
-                $uApellido = $row2['etdescripcion'];
-                $uPassword = $row2['etactivo'];
-
                 //Creamos el objeto de la clase
-                $find = self::U_construct($uName,$uApellido,$uPassword);
+                $find = self::U_construct($row2);
             } else {
                 // Mensaje de error: Fallo de busqueda
                 self::setMensajedeOperacion("Estado Tipos->Buscar - FB: {$base->getError()}");

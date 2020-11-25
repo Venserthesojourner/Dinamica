@@ -110,7 +110,4 @@ class controlDB{
     } 
 
 }
-
-echo controlDB::muestraCargados();
-
 ?>

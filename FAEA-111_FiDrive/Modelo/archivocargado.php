@@ -44,6 +44,7 @@ class archivocargado{
         $obj->setACantDescargas($param['acprotegidoclave']); 
         
         $user = usuario::buscarDB("idusuario", $param['idusuario']);
+       
         $obj->setIDusuario($user);
         return $obj;
     }
@@ -123,7 +124,6 @@ public static function listarDB ($condicion = ""){
         if ($base ->Ejecutar($consulta)){
             
             while ( $row2 = $base->Registro() ){
-
                 //Creamos el objeto de la clase
                 $newOBJET = self::AC_construct($row2);
                 array_push($listado,$newOBJET);
