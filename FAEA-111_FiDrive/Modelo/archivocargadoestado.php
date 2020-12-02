@@ -23,12 +23,18 @@ class archivocargadoestado {
     }
 
     public static function aRE_construct($param){
+        $idET = estadotipos::buscarDB("idestadotipos",$param['idestadotipos']);                
+        $iduser = usuario::buscarDB("idusuario",$param['idusuario']);
+        $idAC = archivocargado::buscarDB("idarchivocargado",$param['idarchivocargado']);
+
         $obj = new archivocargadoestado();
-        $obj->setarchivocargadoestado($param['archivocargadoestado']);
-        $obj->setestadotipos($param['archivocargadoestado']);
-        $obj->setAcedescripcion($param['archivocargadoestado']);
-        $obj->setusuario($param['archivocargadoestado']);
-        $obj->setarchivocargado($param['archivocargadoestado']);
+        $obj->setarchivocargadoestado($param['idarchivocargadoestado']);
+        $obj->setestadotipos($idET);
+        $obj->setAcedescripcion($param['acedescripcion']);
+        $obj->setusuario($iduser);
+        $obj->setarchivocargado($idAC);
+        $obj->setAcefechaingreso($param['acefechaingreso']);
+        $obj->setAcefechafin($param['acefechafin']);
         return $obj;
     }
 
@@ -97,25 +103,14 @@ class archivocargadoestado {
         if ($condicion != ""){
             $consulta = "{$consulta} WHERE {$condicion}";
         }
-        $consulta = "{$consulta} ORDER BY archivocargadoestado";
-
+        $consulta = "{$consulta} ORDER BY idarchivocargadoestado";
         if ($base->Iniciar()){
 
             if ($base ->Ejecutar($consulta)){
                 
                 while ( $row2 = $base->Registro() ){
-
-                    $row2 = $base->Registro ();
-                    $idARE = $row2['archivocargadoestado'];
-                    $idET = estadotipos::buscarDB("estadotipos",$row2['estadotipos']);
-                    $AceD = $row2['acedescripcion'];
-                    $iduser = usuario::buscarDB("usuario",$row2['usuario']);
-                    $idAC = archivocargado::buscarDB("archivocargado",$row2['archivocargado']);
-
                     //Creamos el objeto de la clase
-                    $find = self::aRE_construct($idARE,$idET,$AceD,$iduser,$idAC);
-                    $find->setAcefechaingreso($row2['acefechaingreso']);
-                    $find->setAcefechafin($row2['acefechafin']);
+                    $find = self::aRE_construct($row2);
                     array_push($listado,$find);
                 }
 
@@ -127,7 +122,7 @@ class archivocargadoestado {
             // Mensaje de error: Fallo de conexion
             self::setMensajeOperacion("Estado Tipos->Listar: {$base->getError()}");
         }
-
+        
         return $listado;
 
     }
@@ -140,16 +135,9 @@ class archivocargadoestado {
         if ($base->Iniciar()){
             if ($base->Ejecutar ( $consulta )) {
                 $row2 = $base->Registro ();
-                $idARE = $row2['archivocargadoestado'];
-                $idET = estadotipos::buscarDB("estadotipos",$row2['estadotipos']);
-                $AceD = $row2['acedescripcion'];
-                $iduser = usuario::buscarDB("usuario",$row2['usuario']);
-                $idAC = archivocargado::buscarDB("archivocargado",$row2['archivocargado']);
-
+                
                 //Creamos el objeto de la clase
-                $find = self::aRE_construct($idARE,$idET,$AceD,$iduser,$idAC);
-                $find->setAcefechaingreso($row2['acefechaingreso']);
-                $find->setAcefechafin($row2['acefechafin']);
+                $find = self::aRE_construct($row2);
             } else {
                 // Mensaje de error: Fallo de busqueda
                 self::setMensajeOperacion("Estado Tipos->Buscar - FB: {$base->getError()}");

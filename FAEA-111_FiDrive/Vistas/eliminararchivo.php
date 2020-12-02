@@ -30,9 +30,8 @@ Motivo
 <select name="usuario" id="usuario" required>
 
 <?php 
-
-echo  controlDB::userselector();
-
+$listado = controlDB::obtenerlistaUsuarios();
+echo userselector($listado);
 ?>
 </select>
 </div>

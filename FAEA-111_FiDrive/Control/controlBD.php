@@ -57,30 +57,26 @@ echo "<p>ID ARE: {$archivis->getIdarchivocargadoestado()}</p>
 
 class controlDB{
 
-    public static function userselector(){
-        $block="";
-        $listado = usuario::listarDB(); 
-        foreach ($listado as $user){
-            $valor = $user->getIduser();
-            $tag = $user->getUname();
-            $block .= "<option value='{$valor}'>{$tag}</option>";
-        }
-        return $block;
+    /* Busqueda de Listas */
+
+    public static function obtenerlistaUsuarios($condicion = ""){
+        return $listado = usuario::listarDB($condicion);
     }
 
-    public static function muestraCargados (){
-        $frame = "";
-        $listado = archivocargado::listarDB();
-        foreach ($listado as $archivo){
-            $nombre = $archivo->getACnombre();
-            $frame .= "<button class='btn btn-outline-secondary'>{$nombre}</button>
-            <button class='btn btn-outline-secondary' type='submit' formmethod='post' formaction='amarchivo.php'>Modificar</button>
-        <button class='btn btn-outline-secondary' type='submit' formmethod='post' formaction='compartirarchivo.php'>Compartir</a></button>
-        <button class='btn btn-outline-secondary' type='submit' formmethod='post' formaction='eliminararchivocompartido.php'>Dejar de compartir</a></button>
-        <button class='btn btn-outline-secondary' type='submit' formmethod='post' formaction='eliminararchivo.php?'>Eliminar</a></button>";
-        }
-        return $frame;
+    public static function obtenerListaArchivos($condicion = ""){
+        return $listado = archivocargado::listarDB($condicion);
+    }    
+
+    public static function obtenerListaACE($condicion = ""){
+        return $listado = archivocargadoestado::listarDB($condicion);
     }
+
+    /*Busqueda de Ejemplares */
+    public static function buscarArchivo($campo, $condicion){
+        return $archivo = archivocargado::buscarDB($campo, $condicion);
+    }
+
+    /* Cargas de objetos */
 
     public static function cargarObjeto($param){
         $obj = Null;

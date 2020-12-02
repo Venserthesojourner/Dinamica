@@ -31,14 +31,11 @@ Motivo
 
 <div class="col-md-3">
 <button class="btn btn-outline-secondary" disabled="disabled">Cargado Por</button>  
-
-<label class="control-label" for="usuario"><strong>Usuario</strong></label>
 <select name="usuario" id="usuario" required>
 
 <?php 
-
-echo  controlDB::userselector();
-
+$listado = controlDB::obtenerlistaUsuarios();
+echo userselector($listado);
 ?>
 </select>
 </div>

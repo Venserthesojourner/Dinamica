@@ -101,3 +101,36 @@ include_once ('../Vistas/Basicframe/footer.php');
 ?>
 
 
+Array ( [idarchivocargadoestado] => 6 
+[0] => 6 
+[idestadotipos] => 2 
+[1] => 2 
+[acedescripcion] => Desc Desc desce 
+[2] => Desc Desc desce 
+[idusuario] => 2 
+[3] => 2 
+[acefechaingreso] => 2020-10-28 12:10:03 
+[4] => 2020-10-28 12:10:03 
+[acefechafin] => 2020-10-30 02:21:27 
+[5] => 2020-10-30 02:21:27 
+[idarchivocargado] => 3 
+[6] => 3 )
+
+	
+Desaprobado
+* No El archivo contenido.php muestra los archivos del servidor usando la bbdd
+<!-- * No El archivo archivoscompartidos.php muestra los archivos del servidor usando la bbdd -->
+* No Al editar los datos de un archivo se completa la interface
+* No Al compartir o dejar de compartir un archivo se cambia el estado del archivo en la base de datos.
+* No El modelo archivocargado.php funciona al cargar o editar un archivo
+* No El modelo archivocargado.php funciona al compartir un archivo
+* No Se usa la funcion de autoload
+* No El modelo se modela con objetos el vinculo con otros objetos se hace con el id o no con el objeto ( por ejemplo el usuario en archivocargado)
+
+<!-- * No muestra los archivos cargados en la BBDD en contenido. -->
+
+* Al cargar un archivo, guarda todo en blanco.
+
+* Tampoco le carga el estado al archivo.
+
+* Al no mostrar los datos cargados tampoco se puede verificar la funcionalidad de Editar

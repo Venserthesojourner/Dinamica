@@ -4,7 +4,7 @@ include_once("../Control/operacionesControl.php");
 include_once("../Control/controlBD.php");
 
 date_default_timezone_set ( "America/Argentina/San_Luis" );
-
+$usuario = "Luigi";
 ?>
 
 <!doctype html>
@@ -42,10 +42,11 @@ date_default_timezone_set ( "America/Argentina/San_Luis" );
     </head>  
     <body>
 <!-- Nav tabs -->
-<ul class="nav nav-tabs bg-dark colorCab" id="navId" style="border:0px">
+<ul class="nav nav-tabs bg-dark colorCab" id="navId" style="border:0px; display:flex;">
     <li>
-        <a href="main.php" class="nav-link active"><h1 style="font-weight:bold">FAEA-111_FiDrive</h1></a>
+        <a href="archivoscargados.php" class="nav-link active"><h1 style="font-weight:bold">FAEA-111_FiDrive</h1></a>
     </li>
+    <li style = "margin-left:auto; padding-right:15px; padding-top:15px; padding-bot:0px"> <h1 style="font-weight:bold">Bienvenido <?php echo $usuario ?></h1></li>
 <!--     <li class="nav-item dropdown" style="padding: 0px;">
         <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Menu</a>
         <div class="dropdown-menu">

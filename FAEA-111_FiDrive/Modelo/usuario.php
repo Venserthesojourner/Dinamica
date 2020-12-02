@@ -20,6 +20,7 @@ class usuario{
 
     public static function U_construct($param){
         $obj = new usuario();
+        $obj->setIduser($param['idusuario']);
         $obj->setUname($param['usnombre']);
         $obj->setUapellido($param['usapellido']);
         $obj->setUlogin($param['uslogin']);
@@ -94,10 +95,6 @@ class usuario{
 
                     //Creamos el objeto de la clase
                     $newOBJET = self::U_construct($row2);
-                    $newOBJET->setIduser($row2['idusuario']);
-                    $newOBJET->setUactivo($row2['usactivo']);
-                    $newOBJET->setUlogin($row2['uslogin']);
-
                     array_push($listado,$newOBJET);
                 }
 

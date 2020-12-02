@@ -17,11 +17,11 @@ class estadotipos {
         self::$mensajedeoperacion = "";
     }
 
-    public static function eT_construct($id = 0 ,$tipo = 1, $desc = ""){
+    public static function eT_construct($param){
         $obj = new estadotipos();
-        $obj->setIdEstado($id);
-        $obj->setTipoEstado($tipo);
-        $obj->setDescEstado($desc);
+        $obj->setIdEstado($param['idestadotipos']);
+        $obj->setTipoEstado($param['etactivo']);
+        $obj->setDescEstado($param['etdescripcion']);
         return $obj;
     }
 
@@ -120,12 +120,8 @@ class estadotipos {
             if ($base->Ejecutar ( $consulta )) {
                 $row2 = $base->Registro ();
 
-                $id = $row2['idestadotipos'];
-                $desc = $row2['etdescripcion'];
-                $tipo = $row2['etactivo'];
-
                 //Creamos el objeto de la clase
-                $find = self::eT_construct($id,$tipo,$desc);
+                $find = self::eT_construct($row2);
             } else {
                 // Mensaje de error: Fallo de busqueda
                 self::setMensajeOperacion("Estado Tipos->Buscar - FB: {$base->getError()}");
