@@ -6,6 +6,7 @@ class usuario{
     private $uLogin;
     private $uPassword;
     private $uActivo;
+    private $roles;
     private static $mensajedeoperacion;
 
     public function __construct(){
@@ -15,6 +16,7 @@ class usuario{
         $this->uLogin = "";
         $this->uPassword = "";
         $this->uActivo = 1;
+        $this->roles = array();
         self::$mensajedeoperacion = "";
     }
 
@@ -34,6 +36,7 @@ class usuario{
     public function getUlogin(){return $this->uLogin;}
     public function getUpassword(){return $this->uPassword;}
     public function getUactivo(){return $this->uActivo;}
+    public function getRoles(){return $this->roles;}
     public static function getmensajedeoperacion(){return self::$mensajedeoperacion;}
 
     public function setIduser($idUser){$this->idUser = $idUser;}
@@ -42,6 +45,7 @@ class usuario{
     public function setUlogin($uLogin){$this->uLogin = $uLogin;}
     public function setUpassword($uPassword){$this->uPassword = $uPassword;}
     public function setUactivo($uActivo){$this->uActivo = $uActivo;}
+    public function setRoles($roles){$this->roles = $roles;}
     public static function setMensajedeOperacion($msj){self::$mensajedeoperacion = $msj;}
 
 
@@ -111,16 +115,15 @@ class usuario{
 
     }
 
-    public static function buscarDB ($campo, $parametro){
-        $base = new BaseDatos ();
+    public static function buscarDB($campo, $parametro)
+    {
+        $base = new BaseDatos();
         $consulta = "SELECT * FROM usuario WHERE {$campo} = {$parametro}";
-
-       
         $find = null;
-        
-        if ($base->Iniciar()){
-            if ($base->Ejecutar ( $consulta )) {
-                $row2 = $base->Registro ();
+
+        if ($base->Iniciar()) {
+            if ($base->Ejecutar($consulta)) {
+                $row2 = $base->Registro();
                 //Creamos el objeto de la clase
                 $find = self::U_construct($row2);
             } else {

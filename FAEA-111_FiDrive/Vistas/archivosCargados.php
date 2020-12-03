@@ -2,12 +2,12 @@
 $title = "Carpeta Personal";
 $cardtitle = "<div class='row'>
 <div class='col-md-3'>Carpeta Personal</div>
-<div class='col-md-6'>
+<div class='col-md-4'>
 <form action='#' method='get'>
 <button class='btn btn-secondary' style='margin-left: auto' type='submit' formmethod='post' formaction='amarchivo.php?op=0'>Agregar Archivo</button>
 </form>
 </div>
-<div class='col-md-3' style='display: flex;'>
+<div class='col-md-5' style='display: flex;'>
 <form action='#' method='get'>
 <button class='btn btn-warning' style='margin-left: auto' type='submit' formmethod='post' formaction='archivosCargados.php'>Todos</button>
 <button class='btn btn-success' style='margin-left: auto' type='submit' formmethod='post' formaction='archivosCargados.php?shared=compartido'>Compartido</button>
@@ -17,7 +17,25 @@ $cardtitle = "<div class='row'>
 
 
 include_once ('../Vistas/Basicframe/header.php');
-include_once('../Control/controlBD.php');
+
+/*** MENU DE ADMINISTRADOR ***/
+if (controlSession::esAdmin()){
+echo "
+<div class='row','>
+<div class='card-header bg-info' style='border: 1px solid'>
+    Opciones de Administrador
+</div>
+<div class='col-md-3'></div>
+<div class='col-md-6'>
+<button class='btn btn-success'>Administrar Usuarios</button>
+<button class='btn btn-warning'>Administrar Roles</button>
+<button class='btn btn-danger'>Otro Boton para el Admin</button></div>
+<div class='col-md-3'></div>
+</div>
+";
+}
+
+
 $condicion = "todos";
 if (isset($_GET['shared'])){
     $condicion = $_GET['shared'];
@@ -71,3 +89,4 @@ echo muestraArchivos($condicion, $datos);
 include_once ('../Vistas/Basicframe/footer.php');
 
 ?>
+

@@ -1,6 +1,4 @@
 <?php
-
-
 include_once("../Modelo/BaseDatos.php");
 include_once("../Modelo/estadotipos.php");
 include_once("../Modelo/archivocargado.php");
@@ -72,8 +70,12 @@ class controlDB{
     }
 
     /*Busqueda de Ejemplares */
-    public static function buscarArchivo($campo, $condicion){
+    public static function buscarArchivo($campo, $condicion):archivocargado{
         return $archivo = archivocargado::buscarDB($campo, $condicion);
+    }
+
+    public static function encuentraUsuario($campo, $condicion):usuario{
+        return $usuario = usuario::buscarDB($campo, $condicion);         
     }
 
     /* Cargas de objetos */

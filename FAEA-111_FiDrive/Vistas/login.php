@@ -9,7 +9,7 @@ include_once("../Vistas/Basicframe/header.php");
 <div class="row">
     <div class="col-md-4" style="margin:25px">
     <div class="row"> <label class="control-label" for="archivo"><strong>Usuario</strong></label></div>
-    <div class="row"> <input type="text" name="" id=""></div>
+    <div class="row"> <input type="text" name="nusuario" id="nusuario"></div>
     </div>
     <div class="col-md-4"></div>
     <div class="col-md-4"></div>

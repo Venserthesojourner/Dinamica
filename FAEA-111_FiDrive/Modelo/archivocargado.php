@@ -168,18 +168,15 @@ public function actualizardDB ($parametros){
     $resp = 0;
     $base = new BaseDatos();
     $ref = $this->getIDarchcargado();
-    if ($base->Iniciar()){
-        foreach ($parametros as $clave => $parametro){
-        $consulta = "UPDATE archivocargado SET {$clave}={$parametro} WHERE idarchivocargado = {$ref}";
-        echo $consulta;
+    foreach ($parametros as $clave => $parametro){
+        $consulta = "UPDATE archivocargado SET {$clave}={$parametro} WHERE idarchivocargado = {$ref}";}
+    if ($base->Iniciar()){        
         if ($base->Ejecutar ( $consulta )) {
             $resp++;
         } else {
             //Mensaje de Error: Fallo de Conexion
             self::setMensajedeOperacion("Estado Tipo-> Actualizar-FL: {$base->getError()}");
         }
-        }
-
     } else {
         //Mensaje de Error: Fallo de Conexion
         self::setMensajedeOperacion("Estado Tipo-> Actualizar-FL: {$base->getError()}");
